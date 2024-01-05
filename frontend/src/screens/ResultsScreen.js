@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import './ResultsScreen.css';
+import ToggleFavorites from '../components/ToggleFavorites';
 
 const ResultsScreen = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const ResultsScreen = () => {
   return (
     <>
       <h1>Event: {data._embedded.events[0]._embedded.attractions[0].name}</h1>
+      <ToggleFavorites />
       <div className="eventlist">
         {data._embedded.events.map((event, id) => (
           <article key={id} className="event">
