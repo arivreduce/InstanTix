@@ -105,8 +105,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // route GET /api/users/search
 // @access Private
 const getAPIResults = asyncHandler(async (req, res) => {
-  console.log(req.query);
-  res.status(200).send('success!');
+  const { attId, country } = req.body;
+  console.log(attId);
+  console.log(country);
+  // const results = await fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?&size=200&countryCode=US&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`)
+  res.status(200).json('success!');
 });
 
 export {

@@ -30,6 +30,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    searchAPI: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/search`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +45,5 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,
+  useSearchAPIMutation,
 } = usersApiSlice;
