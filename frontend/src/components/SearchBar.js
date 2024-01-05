@@ -396,7 +396,7 @@ const SearchBar = () => {
     e.preventDefault();
     try {
       const res = await search({ attId, filteredCountryCode }).unwrap();
-      // console.log(res);
+      console.log(res);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
     }
