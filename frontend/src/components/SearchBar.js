@@ -366,7 +366,7 @@ const SearchBar = () => {
     )
       .then((response) => response.json())
       .then((json) => {
-        // console.log(json);
+        console.log(json);
         const results = json._embedded.attractions.filter((user) => {
           return (
             value &&
