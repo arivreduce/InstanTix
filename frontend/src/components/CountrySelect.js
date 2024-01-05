@@ -346,7 +346,7 @@ const CountrySelect = () => {
         className="form-control"
         value={country}
         onChange={changeCountry}
-        style={{ marginBottom: '2rem', marginTop: '1rem' }}
+        style={{ marginBottom: '4rem', marginTop: '1rem' }}
       >
         <option>--Country--</option>
         {countries.map((ctr) => (
