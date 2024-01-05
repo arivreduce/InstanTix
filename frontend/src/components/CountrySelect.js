@@ -350,7 +350,7 @@ const CountrySelect = () => {
       >
         <option>--Country--</option>
         {countries.map((ctr, id) => (
-          <option value={ctr.name} key={id}>
+          <option value={ctr.name} key={id} name={ctr.countryCode}>
             {ctr.name}
           </option>
         ))}
