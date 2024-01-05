@@ -30,6 +30,10 @@ const SearchBar = () => {
     setInput(value);
     fetchData(value);
   };
+
+  const handleClick = (value) => {
+    setInput(value);
+  };
   return (
     <div className="search-bar-container">
       <h1 style={{ marginTop: '-100px', marginBottom: '2rem' }}>
@@ -44,7 +48,7 @@ const SearchBar = () => {
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-      <SearchResultsList results={results} />
+      <SearchResultsList results={results} handleClick={handleClick} />
     </div>
   );
 };

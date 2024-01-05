@@ -349,8 +349,10 @@ const CountrySelect = () => {
         style={{ marginBottom: '4rem', marginTop: '1rem' }}
       >
         <option>--Country--</option>
-        {countries.map((ctr) => (
-          <option value={ctr.name}>{ctr.name}</option>
+        {countries.map((ctr, id) => (
+          <option value={ctr.name} key={id}>
+            {ctr.name}
+          </option>
         ))}
       </select>
     </div>
