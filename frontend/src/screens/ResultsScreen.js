@@ -1,4 +1,3 @@
-import ApiResults from '../components/ApiResults';
 import { useLocation } from 'react-router-dom';
 import './ResultsScreen.css';
 
