@@ -366,7 +366,7 @@ const SearchBar = () => {
     )
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
+        // console.log(json);
         const results = json._embedded.attractions.filter((user) => {
           return (
             value &&
@@ -376,7 +376,7 @@ const SearchBar = () => {
           );
         });
         setResults(results);
-        console.log(results[0].id);
+        // console.log(results[0].id);
       });
   };
 
@@ -396,6 +396,7 @@ const SearchBar = () => {
     e.preventDefault();
     try {
       const res = await search({ attId, filteredCountryCode }).unwrap();
+      // console.log(res);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
     }

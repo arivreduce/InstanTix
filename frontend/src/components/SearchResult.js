@@ -5,8 +5,8 @@ const SearchResult = ({ result, handleClick, setAttId }) => {
     <div
       className="search-result"
       onClick={(e) => {
-        console.log(e);
-        console.log(result);
+        // console.log(e);
+        // console.log(result);
         handleClick(e.target.innerText);
         setAttId(result.id);
       }}
