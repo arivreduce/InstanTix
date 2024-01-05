@@ -101,10 +101,19 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc get API results
+// route GET /api/users/search
+// @access Private
+const getAPIResults = asyncHandler(async (req, res) => {
+  console.log(req.query);
+  res.status(200).send('success!');
+});
+
 export {
   authUser,
   registerUser,
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  getAPIResults,
 };

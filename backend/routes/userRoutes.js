@@ -6,6 +6,7 @@ import {
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  getAPIResults,
 } from '../controllers/userController.js';
 
 import { protect } from '../middleware/authMiddleware.js';
@@ -13,6 +14,7 @@ import { protect } from '../middleware/authMiddleware.js';
 router.post('/', registerUser);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
+router.post('/search', getAPIResults);
 router
   .route('/profile')
   .get(protect, getUserProfile)

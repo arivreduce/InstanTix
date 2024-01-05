@@ -34,6 +34,12 @@ const SearchBar = () => {
   const handleClick = (value) => {
     setInput(value);
   };
+
+  const searchBarClick = () => {
+    const country = document.getElementsByClassName('form-control');
+    console.log(country);
+    alert(`You're looking for ${input} in ${country[0].value}!`);
+  };
   return (
     <div className="search-bar-container">
       <h1 style={{ marginTop: '-100px', marginBottom: '2rem' }}>
@@ -41,7 +47,7 @@ const SearchBar = () => {
       </h1>
       <CountrySelect />
       <div className="input-wrapper">
-        <FaSearch id="search-icon" />
+        <FaSearch id="search-icon" onClick={searchBarClick} />
         <input
           placeholder="Type to search..."
           value={input}
