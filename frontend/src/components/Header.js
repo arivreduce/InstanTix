@@ -28,11 +28,10 @@ const Header = () => {
 
   const favoritesHandler = async () => {
     const userId = userInfo._id;
-    console.log(userInfo);
-    console.log(userInfo._id);
+
     try {
       const res = await getFavs({ userId }).unwrap();
-      navigate('/favorites');
+      navigate('/favorites', { state: { myData: res } });
     } catch (error) {
       console.log(error);
     }

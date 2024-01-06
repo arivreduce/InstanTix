@@ -152,8 +152,9 @@ const sendFavData = asyncHandler(async (req, res) => {
 });
 
 const getUserFavs = asyncHandler(async (req, res) => {
-  console.log(req.body);
-  res.status(200).json('success!');
+  const { userId } = req.body;
+  const user = await User.findById(userId);
+  res.status(200).json(user);
 });
 
 export {
