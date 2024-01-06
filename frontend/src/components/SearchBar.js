@@ -405,6 +405,7 @@ const SearchBar = () => {
           myData: res,
           eventName: input,
           countryName: country,
+          filteredCountryCodeName: filteredCountryCode,
           attIdName: attId,
         },
       });

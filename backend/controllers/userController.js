@@ -111,7 +111,7 @@ const getAPIResults = asyncHandler(async (req, res) => {
   );
   const resultsJson = await results.json();
   if (resultsJson.page.totalElements === 0) {
-    throw new Error('Attraction not found in chose country!');
+    throw new Error('Attraction not found in chosen country!');
   }
   res.status(200).send(resultsJson);
 });
@@ -120,9 +120,35 @@ const getAPIResults = asyncHandler(async (req, res) => {
 // route POST /api/users/results
 // @access Private
 const sendFavData = asyncHandler(async (req, res) => {
-  const { eventName, imageURL, country, attId, userId } = req.body;
-  console.log(userId);
-  res.status(200).json('success!');
+  const { eventName, imageURL, country, attId, userId, filteredCountryCode } =
+    req.body;
+  const user = await User.findById(userId);
+  const favId = eventName.concat(attId);
+  const newFav = {
+    favId,
+    favData: {
+      eventName,
+      imageURL,
+      country,
+      attId,
+      filteredCountryCode,
+    },
+  };
+  const doesFavExist = user.favorites.some((fav) => fav.favId === newFav.favId);
+  if (doesFavExist) {
+    throw new Error('Favorite already exists!');
+  }
+  const favUpdate = await User.findByIdAndUpdate(
+    userId,
+    { $push: { favorites: newFav } },
+    { new: true }
+  );
+  console.log(favUpdate);
+  if (favUpdate) {
+    res.status(200).json(favUpdate);
+  } else {
+    throw new Error('Error updating user!');
+  }
 });
 
 export {
