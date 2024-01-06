@@ -58,6 +58,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       inject: false,
       template: './index.html',
+      favicon: './src/images/logo.png',
     }),
     new ProvidePlugin({
       React: 'react',
