@@ -361,8 +361,12 @@ const SearchBar = () => {
   }, [userInfo, navigate]);
 
   const fetchData = (value) => {
+    const country = document.getElementsByClassName('form-control')[0].value;
+    const filteredCountry = countries.filter((count) => count.name === country);
+    const filteredCountryCode = filteredCountry[0].countryCode;
+    console.log(filteredCountryCode);
     fetch(
-      `https://app.ticketmaster.com/discovery/v2/attractions.json?&size=200&countryCode=US&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`
+      `https://app.ticketmaster.com/discovery/v2/attractions.json?&size=200&preferredCountry=${filteredCountryCode}&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`
     )
       .then((response) => response.json())
       .then((json) => {

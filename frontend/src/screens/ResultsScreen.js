@@ -15,6 +15,7 @@ const ResultsScreen = () => {
   const eventName = location.state?.eventName;
   const country = location.state?.countryName;
   const attId = location.state?.attIdName;
+  const userId = userInfo._id;
   const convertDate = (date) => {
     const month = date.slice(5, 8);
     const day = date.slice(8, 11);
@@ -32,6 +33,7 @@ const ResultsScreen = () => {
         imageURL,
         country,
         attId,
+        userId,
       }).unwrap();
       console.log(res);
       setActive((previousStar) => {
