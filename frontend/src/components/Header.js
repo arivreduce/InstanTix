@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
-import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
@@ -49,6 +49,19 @@ const Header = () => {
             <Nav className="ms-auto">
               {userInfo ? (
                 <>
+                  <LinkContainer
+                    to="/search"
+                    style={{
+                      color: 'white',
+                      marginTop: '.75rem',
+                      marginRight: '1.25rem',
+                    }}
+                  >
+                    <FaSearch
+                      id="search-icon"
+                      style={{ color: 'white', marginTop: '1rem' }}
+                    />
+                  </LinkContainer>
                   <NavDropdown title={userInfo.name} id="username">
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>Profile</NavDropdown.Item>

@@ -36,3 +36,7 @@ input:focus {
 #search-icon {
   color: royalblue;
 }
+
+#search-icon:hover {
+  color: black;
+}

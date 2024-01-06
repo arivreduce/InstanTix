@@ -29,7 +29,12 @@ const FavoriteScreen = () => {
             <img src={fav.favData.imageURL} alt={fav.favData.eventName} />
             <h2>{fav.favData.eventName}</h2>
             <h4>{fav.favData.country}</h4>
-            <button onClick={() => handleDelete(fav.favId)}>Delete</button>
+            <button
+              onClick={() => handleDelete(fav.favId)}
+              className="delete-btn"
+            >
+              Delete
+            </button>
           </article>
         ))}
       </div>
