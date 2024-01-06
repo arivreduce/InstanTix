@@ -1,11 +1,13 @@
 import { Container, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import Logo from '../images/logo.png';
 
 const Hero = () => {
   return (
     <div className="py-5">
       <Container className="d-flex justify-content-center">
         <Card className="p-5 d-flex flex-column align-items-center hero-card bg-light w-75">
+          <img src={Logo} alt="logo" style={{ width: '40%' }} />
           <h1 className="text-center mb-4">InstanTix</h1>
           <p className="text-center mb-4">Never miss another concert.</p>
           <div className="d-flex">
