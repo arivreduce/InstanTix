@@ -400,7 +400,6 @@ const SearchBar = () => {
     e.preventDefault();
     try {
       const res = await search({ attId, filteredCountryCode }).unwrap();
-      console.log(res);
       navigate('/results', {
         state: {
           myData: res,

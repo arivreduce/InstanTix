@@ -110,6 +110,9 @@ const getAPIResults = asyncHandler(async (req, res) => {
     `https://app.ticketmaster.com/discovery/v2/events.json?&size=200&attractionId=${attId}&countryCode=${filteredCountryCode}&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`
   );
   const resultsJson = await results.json();
+  if (resultsJson.page.totalElements === 0) {
+    throw new Error('Attraction not found in chose country!');
+  }
   res.status(200).send(resultsJson);
 });
 
