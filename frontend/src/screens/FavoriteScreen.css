@@ -84,3 +84,17 @@ h1 {
 .delete-btn:hover {
   background-color: darkred;
 }
+
+.refresh-btn {
+  padding: 8px 15px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background-color: darkgreen;
+}

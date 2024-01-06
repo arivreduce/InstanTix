@@ -143,7 +143,6 @@ const sendFavData = asyncHandler(async (req, res) => {
     { $push: { favorites: newFav } },
     { new: true }
   );
-  console.log(favUpdate);
   if (favUpdate) {
     res.status(200).json(favUpdate);
   } else {
@@ -159,7 +158,6 @@ const getUserFavs = asyncHandler(async (req, res) => {
 
 const deleteFav = asyncHandler(async (req, res) => {
   const { userId, favId } = req.body;
-  console.log(userId, favId);
   const user = await User.findByIdAndUpdate(
     userId,
     { $pull: { favorites: { favId: favId } } },
