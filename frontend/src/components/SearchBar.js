@@ -397,7 +397,14 @@ const SearchBar = () => {
     try {
       const res = await search({ attId, filteredCountryCode }).unwrap();
       console.log(res);
-      navigate('/results', { state: { myData: res } });
+      navigate('/results', {
+        state: {
+          myData: res,
+          eventName: input,
+          countryName: country,
+          attIdName: attId,
+        },
+      });
     } catch (error) {
       toast.error(error?.data?.message || error.error);
     }

@@ -12,6 +12,9 @@ const ResultsScreen = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const location = useLocation();
   const data = location.state?.myData;
+  const eventName = location.state?.eventName;
+  const country = location.state?.countryName;
+  const attId = location.state?.attIdName;
   const convertDate = (date) => {
     const month = date.slice(5, 8);
     const day = date.slice(8, 11);
@@ -19,13 +22,17 @@ const ResultsScreen = () => {
     return `${month}${day}-${year}`;
   };
   console.log(data);
+  console.log(eventName);
 
   const handleChangeActive = async () => {
-    const greeting = 'hello';
-    const greeting2 = 'there';
-    console.log('hello');
+    const imageURL = data._embedded.events[0].images[0].url;
     try {
-      const res = await addFav({ greeting, greeting2 }).unwrap();
+      const res = await addFav({
+        eventName,
+        imageURL,
+        country,
+        attId,
+      }).unwrap();
       console.log(res);
       setActive((previousStar) => {
         return !previousStar;
@@ -39,9 +46,7 @@ const ResultsScreen = () => {
     <>
       <div className="titleWrapper">
         <div className="eventTitle">
-          <h1>
-            Event: {data._embedded.events[0]._embedded.attractions[0].name}
-          </h1>
+          <h1>Event: {eventName}</h1>
         </div>
         <div
           className="favoriteStar"

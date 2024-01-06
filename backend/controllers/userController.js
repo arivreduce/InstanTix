@@ -117,7 +117,11 @@ const getAPIResults = asyncHandler(async (req, res) => {
 // route POST /api/users/results
 // @access Private
 const sendFavData = asyncHandler(async (req, res) => {
-  console.log(req.body);
+  const { eventName, imageURL, country, attId } = req.body;
+  console.log(eventName);
+  console.log(imageURL);
+  console.log(country);
+  console.log(attId);
   res.status(200).json('success!');
 });
 
