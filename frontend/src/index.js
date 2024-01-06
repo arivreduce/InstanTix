@@ -17,6 +17,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SearchScreen from './screens/SearchScreen';
 import ResultsScreen from './screens/ResultsScreen';
+import FavoriteScreen from './screens/FavoriteScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
         <Route path="/search" element={<SearchScreen />} />
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/results" element={<ResultsScreen />} />
+        <Route path="/favorites" element={<FavoriteScreen />} />
       </Route>
     </Route>
   )
