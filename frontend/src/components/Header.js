@@ -2,7 +2,10 @@ import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
 import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useLogoutMutation } from '../slices/usersApiSlice';
+import {
+  useGetFavoritesMutation,
+  useLogoutMutation,
+} from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,6 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logoutApiCall] = useLogoutMutation();
+  const [getFavs, { isLoading }] = useGetFavoritesMutation();
 
   const logoutHandler = async () => {
     try {
@@ -18,7 +22,19 @@ const Header = () => {
       dispatch(logout());
       navigate('/');
     } catch (error) {
-      console.log(err);
+      console.log(error);
+    }
+  };
+
+  const favoritesHandler = async () => {
+    const userId = userInfo._id;
+    console.log(userInfo);
+    console.log(userInfo._id);
+    try {
+      const res = await getFavs({ userId }).unwrap();
+      navigate('/favorites');
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -38,9 +54,11 @@ const Header = () => {
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to="/favorites">
-                      <NavDropdown.Item>Favorites</NavDropdown.Item>
-                    </LinkContainer>
+
+                    <NavDropdown.Item onClick={favoritesHandler}>
+                      Favorites
+                    </NavDropdown.Item>
+
                     <NavDropdown.Item onClick={logoutHandler}>
                       Logout
                     </NavDropdown.Item>

@@ -44,6 +44,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getFavorites: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/getFavs`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -54,4 +61,5 @@ export const {
   useUpdateUserMutation,
   useSearchAPIMutation,
   useAddFavoriteMutation,
+  useGetFavoritesMutation,
 } = usersApiSlice;
