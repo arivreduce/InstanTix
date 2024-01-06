@@ -1,10 +1,15 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './ResultsScreen.css';
 import ToggleFavorites from '../components/ToggleFavorites';
+import { useAddFavoriteMutation } from '../slices/usersApiSlice';
+import { toast } from 'react-toastify';
 
 const ResultsScreen = () => {
   const [active, setActive] = useState(false);
+  const [addFav, { isLoading }] = useAddFavoriteMutation();
+  const { userInfo } = useSelector((state) => state.auth);
   const location = useLocation();
   const data = location.state?.myData;
   const convertDate = (date) => {
@@ -15,11 +20,21 @@ const ResultsScreen = () => {
   };
   console.log(data);
 
-  const handleChangeActive = () => {
-    setActive((previousStar) => {
-      return !previousStar;
-    });
+  const handleChangeActive = async () => {
+    const greeting = 'hello';
+    const greeting2 = 'there';
+    console.log('hello');
+    try {
+      const res = await addFav({ greeting, greeting2 }).unwrap();
+      console.log(res);
+      setActive((previousStar) => {
+        return !previousStar;
+      });
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
   };
+
   return (
     <>
       <div className="titleWrapper">
