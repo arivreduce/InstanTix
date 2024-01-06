@@ -13,6 +13,7 @@ const SearchBar = () => {
     {
       name: 'United States',
       countryCode: 'US',
+      locale: 'en-us',
     },
     {
       name: 'Andorra',
@@ -125,6 +126,7 @@ const SearchBar = () => {
     {
       name: 'France',
       countryCode: 'FR',
+      locale: 'fr-fr',
     },
     {
       name: 'Georgia',
@@ -133,6 +135,7 @@ const SearchBar = () => {
     {
       name: 'Germany',
       countryCode: 'DE',
+      locale: 'de-de',
     },
     {
       name: 'Ghana',
@@ -363,10 +366,9 @@ const SearchBar = () => {
   const fetchData = (value) => {
     const country = document.getElementsByClassName('form-control')[0].value;
     const filteredCountry = countries.filter((count) => count.name === country);
-    const filteredCountryCode = filteredCountry[0].countryCode;
-    console.log(filteredCountryCode);
+    const filteredCountryCode = filteredCountry[0].locale;
     fetch(
-      `https://app.ticketmaster.com/discovery/v2/attractions.json?&size=200&preferredCountry=${filteredCountryCode}&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`
+      `https://app.ticketmaster.com/discovery/v2/attractions.json?&size=200&locale=${filteredCountryCode}&apikey=x7FLnZ6Vxb976N6gD1A99dVqDaClGq7X`
     )
       .then((response) => response.json())
       .then((json) => {
