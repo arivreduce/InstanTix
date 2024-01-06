@@ -9,6 +9,7 @@ import {
   getAPIResults,
   sendFavData,
   getUserFavs,
+  deleteFav,
 } from '../controllers/userController.js';
 
 import { protect } from '../middleware/authMiddleware.js';
@@ -19,6 +20,7 @@ router.post('/logout', logoutUser);
 router.post('/search', getAPIResults);
 router.post('/addFav', sendFavData);
 router.post('/getFavs', getUserFavs);
+router.post('/deleteFav', deleteFav);
 router
   .route('/profile')
   .get(protect, getUserProfile)

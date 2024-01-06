@@ -51,6 +51,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    deleteFav: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/deleteFav`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -62,4 +69,5 @@ export const {
   useSearchAPIMutation,
   useAddFavoriteMutation,
   useGetFavoritesMutation,
+  useDeleteFavMutation,
 } = usersApiSlice;

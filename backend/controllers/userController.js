@@ -157,6 +157,17 @@ const getUserFavs = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
+const deleteFav = asyncHandler(async (req, res) => {
+  const { userId, favId } = req.body;
+  console.log(userId, favId);
+  const user = await User.findByIdAndUpdate(
+    userId,
+    { $pull: { favorites: { favId: favId } } },
+    { new: true }
+  );
+  res.status(200).json(user);
+});
+
 export {
   authUser,
   registerUser,
@@ -166,4 +177,5 @@ export {
   getAPIResults,
   sendFavData,
   getUserFavs,
+  deleteFav,
 };
